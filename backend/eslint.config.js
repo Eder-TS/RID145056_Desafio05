@@ -7,10 +7,9 @@ import prettier from 'eslint-plugin-prettier';
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js, prettier },
-    extends: ['js/recommended'],
     languageOptions: { globals: globals.node },
+    plugins: { prettier },
+    extends: [js.configs.recommended, eslintConfigPrettier],
     rules: { 'prettier/prettier': 'error' },
   },
-  eslintConfigPrettier,
 ]);
