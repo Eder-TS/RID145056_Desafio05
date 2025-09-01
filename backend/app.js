@@ -2,6 +2,6 @@ import express from 'express';
 
 const app = express();
 
-const efs = 'tghjkfd';
+console.log('node e sqlite');
 
 export default app;
