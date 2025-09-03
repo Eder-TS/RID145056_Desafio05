@@ -1,14 +1,16 @@
-import db from '../configs/database';
+import db from '../configs/database.js';
 
-db.run(`
+db.run(
+  `
         CREATE TABLE IF NOT EXISTS books (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             pages INTEGER NOT NULL,
             isbn INTEGER NOT NULL,
-            publisher TEXT NOT NULL,
+            publisher TEXT NOT NULL
         )
-    `);
+    `,
+);
 
 function createBookRepository(newBook) {
   return new Promise((resolve, reject) => {
@@ -50,7 +52,7 @@ function findAllBooksRepository() {
   });
 }
 
-function findBooksByIdRepository(bookId) {
+function findBookByIdRepository(bookId) {
   return new Promise((resolve, reject) => {
     db.get(
       `
@@ -119,7 +121,7 @@ function deleteBookRepository(bookId) {
 export default {
   createBookRepository,
   findAllBooksRepository,
-  findBooksByIdRepository,
+  findBookByIdRepository,
   updateBookRepository,
   deleteBookRepository,
 };
