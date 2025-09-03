@@ -1,5 +1,6 @@
 import express from 'express';
 import bookServices from './src/services/bookServices.js';
+import bookControllers from './src/controllers/bookControllers.js';
 
 const app = express();
 const newBook = {
@@ -9,6 +10,12 @@ const newBook = {
   publisher: 'Saquarema',
 };
 console.log('node e sqlite');
-const book = await bookServices.createBookService(newBook);
+const req = {
+  body: {
+    newBook,
+  },
+};
+const res = 0;
+const book = await bookControllers.createBookController(req, res);
 console.log(book);
 export default app;
