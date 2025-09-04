@@ -1,21 +1,21 @@
 import express from 'express';
-import bookServices from './src/services/bookServices.js';
-import bookControllers from './src/controllers/bookControllers.js';
+import router from './src/routes/bookRoutes.js';
+import 'dotenv/config';
 
 const app = express();
-const newBook = {
-  title: 'Zumare',
-  pages: 1234,
-  isbn: 93984874,
-  publisher: 'Saquarema',
-};
-console.log('node e sqlite');
-const req = {
-  body: {
-    newBook,
-  },
-};
-const res = 0;
-const book = await bookControllers.createBookController(req, res);
-console.log(book);
-export default app;
+
+app.use(express.json());
+
+app.use(router);
+
+app.use((req, res) => {
+  res.status(404).send({
+    message: `Rota ${req.method} ${req.originalUrl} não encontrada.`,
+  });
+});
+
+const port = process.env.PORT;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}.`);
+});
