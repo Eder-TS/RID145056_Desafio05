@@ -2,3 +2,5 @@ node_modules
 
 library_database.db
 .env
+.prettierrc
+eslint.config.js

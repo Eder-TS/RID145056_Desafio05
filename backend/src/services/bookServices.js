@@ -12,9 +12,7 @@ async function findAllBooksService() {
   return await bookRepositories.findAllBooksRepository();
 }
 
-async function findBookByIdService(id) {
-  const bookId = Number(id);
-
+async function findBookByIdService(bookId) {
   const book = await bookRepositories.findBookByIdRepository(bookId);
 
   if (!book) throw new Error('Book not found.');
@@ -22,9 +20,7 @@ async function findBookByIdService(id) {
   return book;
 }
 
-async function updateBookService(id, updatedBook) {
-  const bookId = Number(id);
-
+async function updateBookService(bookId, updatedBook) {
   const bookExists = await bookRepositories.findBookByIdRepository(bookId);
   if (!bookExists) throw new Error('Book not found.');
 
@@ -34,9 +30,7 @@ async function updateBookService(id, updatedBook) {
   return book;
 }
 
-async function deleteBookService(id) {
-  const bookId = Number(id);
-
+async function deleteBookService(bookId) {
   const bookExists = await bookRepositories.findBookByIdRepository(bookId);
   if (!bookExists) throw new Error('Book not found.');
 

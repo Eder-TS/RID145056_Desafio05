@@ -21,10 +21,10 @@ async function findAllBooksController(req, res) {
 }
 
 async function findBookByIdController(req, res) {
-  const id = req.params.id;
+  const bookId = req.params.id;
 
   try {
-    const book = await bookServices.findBookByIdService(id);
+    const book = await bookServices.findBookByIdService(bookId);
     res.send({ book });
   } catch (error) {
     res.status(404).send(error.message);
@@ -32,11 +32,11 @@ async function findBookByIdController(req, res) {
 }
 
 async function updateBookConstroller(req, res) {
-  const id = req.params.id;
+  const bookId = req.params.id;
   const updatedBook = req.body;
 
   try {
-    const book = await bookServices.updateBookService(id, updatedBook);
+    const book = await bookServices.updateBookService(bookId, updatedBook);
     res.send({ book });
   } catch (error) {
     res.status(400).send(error.message);
@@ -44,10 +44,10 @@ async function updateBookConstroller(req, res) {
 }
 
 async function deleteBookController(req, res) {
-  const id = req.params.id;
+  const bookId = req.params.id;
 
   try {
-    const deletedBook = await bookServices.deleteBookService(id);
+    const deletedBook = await bookServices.deleteBookService(bookId);
     res.send({ deletedBook });
   } catch (error) {
     res.status(400).send(error.message);

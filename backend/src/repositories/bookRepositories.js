@@ -6,7 +6,7 @@ db.run(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             pages INTEGER NOT NULL,
-            isbn INTEGER NOT NULL,
+            isbn TEXT NOT NULL,
             publisher TEXT NOT NULL
         )
     `,
@@ -74,28 +74,23 @@ function findBookByIdRepository(bookId) {
 
 function updateBookRepository(bookId, updatedBook) {
   return new Promise((resolve, reject) => {
-    const fields = ['title', 'pages', 'isbn', 'publisher'];
-    let query = 'UPDATE books SET';
-    let values = [];
+    const { title, pages, isbn, publisher } = updatedBook;
 
-    fields.forEach((field) => {
-      if (updatedBook[field] !== undefined) {
-        query += ` ${field} = ?,`;
-        values.push(updatedBook[field]);
-      }
-    });
-
-    query = query.slice(0, -1);
-    query += ' WHERE id = ?';
-    values.push(bookId);
-
-    db.run(query, values, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve({ id: bookId, ...updatedBook });
-      }
-    });
+    db.run(
+      `
+        UPDATE books
+        SET title = ?, pages = ?, isbn = ?, publisher = ?
+        WHERE id = ?
+      `,
+      [title, pages, isbn, publisher, bookId],
+      (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve({ id: bookId, ...updatedBook });
+        }
+      },
+    );
   });
 }
 
