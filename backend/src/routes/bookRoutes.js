@@ -25,10 +25,6 @@ router.put(
   bookControllers.updateBookConstroller,
 );
 
-router.delete(
-  '/livros/:id',
-  validateBookId,
-  bookControllers.deleteBookController,
-);
+router.delete('/:id', validateBookId, bookControllers.deleteBookController);
 
 export default router;
