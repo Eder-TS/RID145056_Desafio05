@@ -1,7 +1,6 @@
 import {useEffect , useState} from 'react'
 import Header from '../../components/Header/Header'
 import "./index.scss"
-import SubmenuLivros from '../../components/SubmenuLivros/SubmenuLivros'
 import { useParams } from 'react-router-dom'
 import { LivrosService } from '../../api/LivrosService'
 
@@ -42,7 +41,7 @@ const LivrosEdicao = () => {
   return (
   <>
     <Header/>    
-    <SubmenuLivros/>
+    
     <div className='livrosCadastro'>
         <h1>Edição de Livros</h1>
         <div>

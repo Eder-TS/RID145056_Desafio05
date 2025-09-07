@@ -1,7 +1,6 @@
 import {useEffect , useState} from 'react'
 import Header from '../../components/Header/Header'
 import "./index.scss"
-import SubmenuLivros from '../../components/SubmenuLivros/SubmenuLivros'
 import { LivrosService } from '../../api/LivrosService'
 import {Link} from "react-router-dom"
 
@@ -35,7 +34,7 @@ const Livros = () => {
   return (
   <>
     <Header/>    
-    <SubmenuLivros/>
+    
     <div className='livros'>
         <h1>Escolha o seu livro</h1>        
         <ul>
