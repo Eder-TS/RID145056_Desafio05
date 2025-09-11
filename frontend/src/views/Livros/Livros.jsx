@@ -18,11 +18,11 @@ const Livros = () => {
     if(valida){
       await LivrosService.deleteLivro(livroId)
       .then(({data}) => {
-        alert(data.mensagem)
+        alert(data.message)
         getLivros()
       })
       .catch(({response:{data,status}})=>{
-        alert(`${status} - ${data.mensagem}`)      
+        alert(`${status} - ${data.message}`)      
       });
     }
   }
@@ -40,8 +40,8 @@ const Livros = () => {
         <ul>
         {livros.map((livro) =>(
           <li key={livro.id}>
-            {livro.titulo} 
-            <span>{livro.editora}</span>
+            {livro.title} 
+            <span>{livro.publisher}</span>
             <div className='botoes'>
               <div>
                 <Link className='btn edit' to={`/livros/edicao/${livro.id}`}>

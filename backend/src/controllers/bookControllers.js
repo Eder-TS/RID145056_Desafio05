@@ -5,7 +5,7 @@ async function createBookController(req, res) {
 
   try {
     const book = await bookServices.createBookService(newBook);
-    res.status(201).send({ book });
+    res.status(201).send(book);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -14,7 +14,7 @@ async function createBookController(req, res) {
 async function findAllBooksController(req, res) {
   try {
     const books = await bookServices.findAllBooksService();
-    res.send({ books });
+    res.send(books);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -22,7 +22,6 @@ async function findAllBooksController(req, res) {
 
 async function findBookByIdController(req, res) {
   const bookId = req.params.id;
-
   try {
     const book = await bookServices.findBookByIdService(bookId);
     res.send({ book });
@@ -48,7 +47,7 @@ async function deleteBookController(req, res) {
 
   try {
     const deletedBook = await bookServices.deleteBookService(bookId);
-    res.send({ deletedBook });
+    res.send(deletedBook);
   } catch (error) {
     res.status(400).send(error.message);
   }
