@@ -40,8 +40,8 @@ const Livros = () => {
         <ul>
         {livros.map((livro) =>(
           <li key={livro.id}>
-            {livro.title} 
-            <span>{livro.publisher}</span>
+            {livro.titulo} 
+            <span>{livro.editora}</span>
             <div className='botoes'>
               <div>
                 <Link className='btn edit' to={`/livros/edicao/${livro.id}`}>

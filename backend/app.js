@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './src/routes/bookRoutes.js';
+import router from './src/routes/livroRoutes.js';
 import 'dotenv/config';
 import cors from 'cors';
 
@@ -13,12 +13,12 @@ app.use(router);
 
 app.use((req, res) => {
   res.status(404).send({
-    message: `Rota ${req.method} ${req.originalUrl} não encontrada.`,
+    mensagem: `Rota ${req.method} ${req.originalUrl} não encontrada.`,
   });
 });
 
 const port = process.env.PORT;
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}.`);
+  console.log(`Servidor rodando na porta ${port}.`);
 });

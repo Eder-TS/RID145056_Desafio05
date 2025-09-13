@@ -6,29 +6,27 @@ import { LivrosService } from '../../api/LivrosService'
 
 const LivrosEdicao = () => {
   let {livroId} = useParams();
-  console.log(livroId + 'inicio')
-  
+    
   const [livro, setLivro] = useState([])
 
   async function getLivro(){
-    console.log(livroId+'gtelivro')
     const {data} = await LivrosService.getLivro(livroId);
     setLivro(data)
-    console.log(data)
   }
 
   async function editLivro(){
     const body = {
-        id:Number(livro.id),
-        titulo:livro.titulo,
+        id: Number(livro.id),
+        titulo: livro.titulo,
         num_paginas: Number(livro.num_paginas),
         isbn: livro.isbn,
         editora: livro.editora
       }
+      
     if(livro.id!=undefined && livro.id!='' && livro.titulo!=undefined && livro.titulo!='' && livro.num_paginas!=undefined && livro.num_paginas!='' && livro.isbn !=undefined && livro.isbn !='' && livro.editora !=undefined && livro.editora !=''){
       await LivrosService.updateLivro(Number(livro.id),body)
       .then(({data})=>{
-        alert(data.mensagem)
+        alert(data.message)
       })
       .catch(({response:{data,status}})=>{
         alert(`${status} - ${data}`)      

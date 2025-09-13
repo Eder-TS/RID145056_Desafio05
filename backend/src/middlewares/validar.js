@@ -1,7 +1,7 @@
 import z from 'zod';
-import { bookIdSchema } from '../schemas/bookSchema.js';
+import { livroIdSchema } from '../schemas/livroSchemas.js';
 
-const validate = (schema) => (request, response, next) => {
+const validar = (schema) => (request, response, next) => {
   try {
     schema.parse(request.body);
     next();
@@ -19,10 +19,10 @@ const validate = (schema) => (request, response, next) => {
   }
 };
 
-const validateBookId = (request, response, next) => {
+const validarLivroId = (request, response, next) => {
   try {
-    const bookId = +request.params.id;
-    bookIdSchema.parse({ id: bookId });
+    const livroId = +request.params.id;
+    livroIdSchema.parse({ id: livroId });
     next();
   } catch (error) {
     let message;
@@ -37,4 +37,4 @@ const validateBookId = (request, response, next) => {
   }
 };
 
-export { validate, validateBookId };
+export { validar, validarLivroId };

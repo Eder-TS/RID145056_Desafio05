@@ -16,17 +16,17 @@ const LivrosCadastro = () => {
     e.preventDefault();
 
         const body = {
-        title: livro.titulo,
-        pages: Number(livro.num_paginas),
+        titulo: livro.titulo,
+        num_paginas: Number(livro.num_paginas),
         isbn: livro.isbn,
-        publisher: livro.editora
+        editora: livro.editora
       }
 
       if(livro.titulo!=undefined && livro.titulo!='' && livro.num_paginas!=undefined && livro.num_paginas!='' && livro.isbn !=undefined && livro.isbn !='' && livro.editora !=undefined && livro.editora !=''){
       await LivrosService.createLivro(body)
       .then((response)=>{
-        const title = response.data.title
-        alert(`Livro ${title} criado com sucesso!`)
+        const titulo = response.data.titulo
+        alert(`Livro ${titulo} criado com sucesso!`)
         setLivro({
           titulo: '',
           num_paginas: '',
