@@ -4,14 +4,17 @@ import "./index.scss"
 import { useParams } from 'react-router-dom'
 import { LivrosService } from '../../api/LivrosService'
 
-const LivrosEdicao = () => {  
+const LivrosEdicao = () => {
   let {livroId} = useParams();
-
+  console.log(livroId + 'inicio')
+  
   const [livro, setLivro] = useState([])
 
   async function getLivro(){
+    console.log(livroId+'gtelivro')
     const {data} = await LivrosService.getLivro(livroId);
     setLivro(data)
+    console.log(data)
   }
 
   async function editLivro(){
@@ -34,8 +37,8 @@ const LivrosEdicao = () => {
 
   }
 
-  useEffect(() => {
-    getLivro()    
+   useEffect(() => {
+     getLivro()     
   }, [])  
 
   return (
@@ -67,9 +70,7 @@ const LivrosEdicao = () => {
               <input type="text"  required onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}} value={livro.editora || ''}></input>
             </div> 
             <div className='form-group'>
-              <button onClick={()=>{
-              editLivro()
-            }}>Atualizar Livro</button>  
+              <button type='button' onClick={editLivro}>Atualizar Livro</button> 
             </div>                   
           </form>
           </div>        

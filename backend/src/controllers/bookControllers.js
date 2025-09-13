@@ -24,7 +24,7 @@ async function findBookByIdController(req, res) {
   const bookId = req.params.id;
   try {
     const book = await bookServices.findBookByIdService(bookId);
-    res.send({ book });
+    res.send(book);
   } catch (error) {
     res.status(404).send(error.message);
   }
