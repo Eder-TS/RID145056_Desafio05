@@ -87,7 +87,11 @@ function atualizaLivroRepository(livroId, livroAtualizado) {
         if (error) {
           reject(error);
         } else {
-          resolve({ id: livroId, ...livroAtualizado });
+          resolve({
+            message: 'Livro alterado com sucesso.',
+            id: livroId,
+            ...livroAtualizado,
+          });
         }
       },
     );

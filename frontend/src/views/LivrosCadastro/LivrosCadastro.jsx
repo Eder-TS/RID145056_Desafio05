@@ -9,7 +9,7 @@ const LivrosCadastro = () => {
     num_paginas: '',
     isbn: '',
     editora: ''
-})
+  })
 
   async function createLivro(e){
     // Evitando da página recarregar para mostrar os alert's com segurança.
@@ -61,7 +61,7 @@ const LivrosCadastro = () => {
     <div className='livrosCadastro'>
         <h1>Cadastro de Livros</h1>
         <div>          
-          <form id="formulario">
+          <form id="formulario" onSubmit={createLivro}>
           
           <div className='form-group'>
             <label>Titulo</label>
@@ -80,7 +80,7 @@ const LivrosCadastro = () => {
             <input type="text" id='editora' value={livro.editora} required onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}}></input>
           </div> 
           <div className='form-group'>
-            <button type='button' onClick={createLivro}>Cadastrar Livro</button>  
+            <button type='submit'>Cadastrar Livro</button>  
           </div>         
           </form>
         </div>

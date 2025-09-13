@@ -14,7 +14,9 @@ const LivrosEdicao = () => {
     setLivro(data)
   }
 
-  async function editLivro(){
+  async function editLivro(e){
+    e.preventDefault();
+
     const body = {
         id: Number(livro.id),
         titulo: livro.titulo,
@@ -25,11 +27,19 @@ const LivrosEdicao = () => {
       
     if(livro.id!=undefined && livro.id!='' && livro.titulo!=undefined && livro.titulo!='' && livro.num_paginas!=undefined && livro.num_paginas!='' && livro.isbn !=undefined && livro.isbn !='' && livro.editora !=undefined && livro.editora !=''){
       await LivrosService.updateLivro(Number(livro.id),body)
-      .then(({data})=>{
-        alert(data.message)
+      .then((response)=>{
+        alert(response.data.message + livro.titulo)
       })
-      .catch(({response:{data,status}})=>{
-        alert(`${status} - ${data}`)      
+      .catch((error)=>{
+        let message = 'Erro inesperado.'
+
+        if (error.response) {
+          message = JSON.stringify(error.response.data.message)
+        } else if (error.request) {
+          message = 'Sem resposta do servidor.'
+        }
+        
+        alert(`${message}`)
       });
     }  
 
@@ -46,7 +56,8 @@ const LivrosEdicao = () => {
     <div className='livrosCadastro'>
         <h1>Edição de Livros</h1>
         <div>
-          <form id="formulario">
+          <form id="formulario" onSubmit={editLivro}>
+
             <div className='form-group'>
               <label>Id</label>
               <input type="text" disabled required onChange={(event)=>{ setLivro({...livro, id: event.target.value})}} value={livro.id || ''}></input>
@@ -68,7 +79,7 @@ const LivrosEdicao = () => {
               <input type="text"  required onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}} value={livro.editora || ''}></input>
             </div> 
             <div className='form-group'>
-              <button type='button' onClick={editLivro}>Atualizar Livro</button> 
+              <button type='submit'>Atualizar Livro</button> 
             </div>                   
           </form>
           </div>        
