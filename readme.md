@@ -16,7 +16,7 @@ Testes realizados nos navegadores Google Chrome versão 140.0.7339.80 e Mozilla 
 git@github.com:Eder-TS/RID145056_Desafio05.git
 ```
 
-**2.Acesse a pasta backend e qualquer terminal da sua máquina:**
+**2.Acesse a pasta backend em qualquer terminal da sua máquina:**
 ```bash
 cd RID145056_Desafio05
 cd backend
