@@ -5,7 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "inicio": "nodemon node app.js"
+    "server": "nodemon node app.js"
   },
   "author": "Eder TS",
   "license": "ISC",

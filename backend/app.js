@@ -17,8 +17,6 @@ app.use((req, res) => {
   });
 });
 
-const port = process.env.PORT;
-
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}.`);
+app.listen(3000, () => {
+  console.log(`Servidor rodando na porta 3000.`);
 });
